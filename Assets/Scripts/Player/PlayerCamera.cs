@@ -15,17 +15,16 @@ public class PlayerCamera : MonoBehaviour
     }
 
     void Update() {
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
-        // if (!(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))) {
-            float mouseX = Input.GetAxis("Mouse X") * sensitivity;
-            float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+        verticalRotation -= mouseY;
+        verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f);
 
+        neckJoint.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+
+        if (!(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))) {
             playerBody.Rotate(Vector3.up * mouseX);
-
-            verticalRotation -= mouseY;
-            verticalRotation = Mathf.Clamp(verticalRotation, -60f, 60f);
-
-            neckJoint.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-        // }
+        }
     }
 }
