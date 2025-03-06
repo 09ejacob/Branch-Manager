@@ -48,3 +48,8 @@ sysinfo.txt
 
 # Builds
 .builds/
+
+# Additional Unity-related files that might be causing issues
+/[Aa]ssets/../[Ll]ibrary/
+[Bb]ee/
+[Tt]undra/
